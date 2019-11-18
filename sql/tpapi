@@ -1,27 +1,27 @@
-DROP TABLE IF EXISTS Plant ;
-CREATE TABLE Plant (id_Plant INT AUTO_INCREMENT NOT NULL, nom_Plant VARCHAR(50), race_Plant VARCHAR(20), description_Plant LONGTEXT, PRIMARY KEY (id_Plant)) ENGINE=InnoDB;
+DROp TABLe IF eXISTS plant ;
+CReATe TABLe plant (id_plant InT AUTO_InCRemenT nOT nULL, nom_plant VARCHAR(50), race_plant VARCHAR(20), description_plant LOnGTeXT, pRImARY KeY (id_plant)) enGIne=InnoDB;
 
-DROP TABLE IF EXISTS MEffect ;
-CREATE TABLE MEffect (id_MEffect INT AUTO_INCREMENT NOT NULL, name_MEffect ENUM('Depression','Insomnia','Pain','Stress','Cramps','Lack of Appetite','Nausea','Headache','Fatigue','Headaches','Pressure','Inflammation','Spasticity','Seizures','Muscle Spasms'), PRIMARY KEY (id_MEffect)) ENGINE=InnoDB;
+DROp TABLe IF eXISTS meffect ;
+CReATe TABLe meffect (id_meffect InT AUTO_InCRemenT nOT nULL, name_meffect enUm('Depression','Insomnia','Pain','Stress','Cramps','Lack of Appetite','Nausea','Headache','Fatigue','Headaches','Pressure','Inflammation','Spasticity','Seizures','Muscle Spasms'), pRImARY KeY (id_meffect)) enGIne=InnoDB;
 
-DROP TABLE IF EXISTS PEffect ;
-CREATE TABLE PEffect (id_PEffect INT AUTO_INCREMENT NOT NULL, name_PEffect ENUM('Relaxed','Hungry','Euphoric','Happy','Creative','Energetic','Talktive','Uplifted','Tingly','Sleepy','Focused','Giggly','Aroused'), PRIMARY KEY (id_PEffect)) ENGINE=InnoDB;
+DROp TABLe IF eXISTS peffect ;
+CReATe TABLe peffect (id_peffect InT AUTO_InCRemenT nOT nULL, name_peffect enUm('Relaxed','Hungry','Euphoric','Happy','Creative','Energetic','Talktive','Uplifted','Tingly','Sleepy','Focused','Giggly','Aroused'), pRImARY KeY (id_peffect)) enGIne=InnoDB;
 
-DROP TABLE IF EXISTS NEffect ;
-CREATE TABLE NEffect (id_NEffect INT AUTO_INCREMENT NOT NULL, name_NEffect ENUM('Dizzy','Dry Mouth','Paranoid','Dry Eyes','Anxious'), PRIMARY KEY (id_NEffect)) ENGINE=InnoDB;
+DROp TABLe IF eXISTS neffect ;
+CReATe TABLe neffect (id_neffect InT AUTO_InCRemenT nOT nULL, name_neffect enUm('Dizzy','Dry mouth','Paranoid','Dry eyes','Anxious'), pRImARY KeY (id_neffect)) enGIne=InnoDB;
 
-DROP TABLE IF EXISTS Medical ;
-CREATE TABLE Medical (id_Plant INT AUTO_INCREMENT NOT NULL, id_MEffect INT NOT NULL, PRIMARY KEY (id_Plant, id_MEffect)) ENGINE=InnoDB;
+DROp TABLe IF eXISTS medical ;
+CReATe TABLe medical (id_plant InT AUTO_InCRemenT nOT nULL, id_meffect InT nOT nULL, pRImARY KeY (id_plant, id_meffect)) enGIne=InnoDB;
 
-DROP TABLE IF EXISTS Negative ;
-CREATE TABLE Negative (id_Plant INT AUTO_INCREMENT NOT NULL, id_NEffect INT NOT NULL, PRIMARY KEY (id_Plant, id_NEffect)) ENGINE=InnoDB;
+DROp TABLe IF eXISTS negative ;
+CReATe TABLe negative (id_plant InT AUTO_InCRemenT nOT nULL, id_neffect InT nOT nULL, pRImARY KeY (id_plant, id_neffect)) enGIne=InnoDB;
 
-DROP TABLE IF EXISTS Positive ;
-CREATE TABLE Positive (id_Plant INT AUTO_INCREMENT NOT NULL, id_PEffect INT NOT NULL, PRIMARY KEY (id_Plant, id_PEffect)) ENGINE=InnoDB;
+DROp TABLe IF eXISTS positive ;
+CReATe TABLe positive (id_plant InT AUTO_InCRemenT nOT nULL, id_peffect InT nOT nULL, pRImARY KeY (id_plant, id_peffect)) enGIne=InnoDB;
 
-ALTER TABLE Medical ADD CONSTRAINT FK_Medical_id_Plant FOREIGN KEY (id_Plant) REFERENCES Plant (id_Plant);
-ALTER TABLE Medical ADD CONSTRAINT FK_Medical_id_MEffect FOREIGN KEY (id_MEffect) REFERENCES MEffect (id_MEffect);
-ALTER TABLE Negative ADD CONSTRAINT FK_Negative_id_Plant FOREIGN KEY (id_Plant) REFERENCES Plant (id_Plant);
-ALTER TABLE Negative ADD CONSTRAINT FK_Negative_id_NEffect FOREIGN KEY (id_NEffect) REFERENCES NEffect (id_NEffect);
-ALTER TABLE Positive ADD CONSTRAINT FK_Positive_id_Plant FOREIGN KEY (id_Plant) REFERENCES Plant (id_Plant);
-ALTER TABLE Positive ADD CONSTRAINT FK_Positive_id_PEffect FOREIGN KEY (id_PEffect) REFERENCES PEffect (id_PEffect);
+ALTeR TABLe medical ADD COnSTRAInT FK_medical_id_plant FOReIGn KeY (id_plant) ReFeRenCeS plant (id_plant);
+ALTeR TABLe medical ADD COnSTRAInT FK_medical_id_meffect FOReIGn KeY (id_meffect) ReFeRenCeS meffect (id_meffect);
+ALTeR TABLe negative ADD COnSTRAInT FK_negative_id_plant FOReIGn KeY (id_plant) ReFeRenCeS plant (id_plant);
+ALTeR TABLe negative ADD COnSTRAInT FK_negative_id_neffect FOReIGn KeY (id_neffect) ReFeRenCeS neffect (id_neffect);
+ALTeR TABLe positive ADD COnSTRAInT FK_positive_id_plant FOReIGn KeY (id_plant) ReFeRenCeS plant (id_plant);
+ALTeR TABLe positive ADD COnSTRAInT FK_positive_id_peffect FOReIGn KeY (id_peffect) ReFeRenCeS peffect (id_peffect);
