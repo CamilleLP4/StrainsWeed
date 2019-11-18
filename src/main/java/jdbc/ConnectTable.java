@@ -15,7 +15,7 @@ public class ConnectTable {
 	
 	private static String password = "root"; 
     private static String user = "root";
-    private static String url = "jdbc:mysql://localhost:3306/simplon?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+    private static String url = "jdbc:mysql://localhost:3306/weed?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
 	/**
 	 * Initialise la connection à la création.
@@ -23,8 +23,10 @@ public class ConnectTable {
 	public ConnectTable() {
 		try {
 			initConnection();
+			System.out.println("ok");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("nop");
 		}
 	}
 	
@@ -45,6 +47,9 @@ public class ConnectTable {
 		this.connection = DriverManager.getConnection(url, user, password);
 	}
 	
-	
+	public static void main(String[] args) {
+		ConnectTable test = new ConnectTable();
+		test.getConnection();
+	}
 	
 }
