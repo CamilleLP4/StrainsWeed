@@ -1,4 +1,4 @@
-package Jdbc;
+package jdbc;
 
 public class ConnectTable {
 
