@@ -14,6 +14,7 @@ public class TableLink {
 	}
 
 	public void addLink(String effect ,int idPlant , String typeEffect ) throws SQLException {
+		
 		String tableEffect;	
 		switch (typeEffect) {
 		   case "medical" : 
@@ -30,12 +31,20 @@ public class TableLink {
 		PreparedStatement stmt = this.conn.prepareStatement("select id_"+ tableEffect +" from "+ tableEffect +" where name_"+ tableEffect +" = ?");
 		
 		stmt.setString(1, effect);
-		System.out.println(stmt);
+		
 		ResultSet rs = stmt.executeQuery();
 		
 		if (rs.next()) {
 		int id = rs.getInt("id_"+ tableEffect);
 		System.out.println(id);
+		
+		stmt.close();
+		
+		stmt = this.conn.prepareStatement("INSERT INTO " + typeEffect +" values(?,?)");
+		stmt.setInt(1, idPlant);
+		stmt.setInt(2, id);
+		stmt.executeUpdate();
+		System.out.println(stmt);
 		
 		}
 		
