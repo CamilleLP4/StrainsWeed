@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS Plant ;
+CREATE TABLE Plant (id_Plant INT AUTO_INCREMENT NOT NULL, nom_Plant VARCHAR(50), description_Plant LONGTEXT, PRIMARY KEY (id_Plant)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS MEffect ;
+CREATE TABLE MEffect (id_MEffect INT AUTO_INCREMENT NOT NULL, name_MEffect ENUM('Depression','Insomnia','Pain','Stress','Cramps','Lack of Appetite','Nausea','Headache','Fatigue','Headaches','Pressure','Inflammation','Spasticity','Seizures','Muscle Spasms'), PRIMARY KEY (id_MEffect)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS PEffect ;
+CREATE TABLE PEffect (id_PEffect INT AUTO_INCREMENT NOT NULL, name_PEffect ENUM('Relaxed','Hungry','Euphoric','Happy','Creative','Energetic','Talktive','Uplifted','Tingly','Sleepy','Focused','Giggly','Aroused'), PRIMARY KEY (id_PEffect)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS NEffect ;
+CREATE TABLE NEffect (id_NEffect INT AUTO_INCREMENT NOT NULL, name_NEffect ENUM('Dizzy','Dry Mouth','Paranoid','Dry Eyes','Anxious'), PRIMARY KEY (id_NEffect)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Medical ;
+CREATE TABLE Medical (id_Plant INT AUTO_INCREMENT NOT NULL, id_MEffect INT NOT NULL, PRIMARY KEY (id_Plant, id_MEffect)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Negative ;
+CREATE TABLE Negative (id_Plant INT AUTO_INCREMENT NOT NULL, id_NEffect INT NOT NULL, PRIMARY KEY (id_Plant, id_NEffect)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Positive ;
+CREATE TABLE Positive (id_Plant INT AUTO_INCREMENT NOT NULL, id_PEffect INT NOT NULL, PRIMARY KEY (id_Plant, id_PEffect)) ENGINE=InnoDB;
+
+ALTER TABLE Medical ADD CONSTRAINT FK_Medical_id_Plant FOREIGN KEY (id_Plant) REFERENCES Plant (id_Plant);
+ALTER TABLE Medical ADD CONSTRAINT FK_Medical_id_MEffect FOREIGN KEY (id_MEffect) REFERENCES MEffect (id_MEffect);
+ALTER TABLE Negative ADD CONSTRAINT FK_Negative_id_Plant FOREIGN KEY (id_Plant) REFERENCES Plant (id_Plant);
+ALTER TABLE Negative ADD CONSTRAINT FK_Negative_id_NEffect FOREIGN KEY (id_NEffect) REFERENCES NEffect (id_NEffect);
+ALTER TABLE Positive ADD CONSTRAINT FK_Positive_id_Plant FOREIGN KEY (id_Plant) REFERENCES Plant (id_Plant);
+ALTER TABLE Positive ADD CONSTRAINT FK_Positive_id_PEffect FOREIGN KEY (id_PEffect) REFERENCES PEffect (id_PEffect);
