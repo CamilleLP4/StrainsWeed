@@ -14,36 +14,32 @@ public class Effets {
 	Connection con;
 	String table = ""; 
 
-	public Effets(String effet, String name, Connection con) throws SQLException {
-		this.effet = effet;
-		this.name = name;
+	public Effets(Connection con) throws SQLException {
 		this.con = con;
-		this.addEffect();
 	}
 
-	public void addEffect() throws SQLException {
-		
-		this.setTable();
+	public void addEffect(String effet, String name) throws SQLException {
+		this.setTable(effet);
 		PreparedStatement stmt = this.con.prepareStatement("INSERT INTO " + this.table + " (name_"+ table +") values(?)");
-		stmt.setString(1, this.name);
+		stmt.setString(1, name);
 		System.out.println(stmt);
 		stmt.executeUpdate();
 
 	}
 	
-	private void setTable() {
-		if (this.effet == "positive") {
+	private void setTable(String effet) {
+		if (effet == "positive") {
 			 this.table = "peffect";
-		} else if (this.effet == "negative") {
+		} else if (effet == "negative") {
 			 this.table = "neffect";
-		} else if (this.effet == "medical") {
+		} else if (effet == "medical") {
 			 this.table = "meffect";
 		}
 	}
 
-	public List<String> listEffect() throws SQLException {
+	public List<String> listEffect(String effet) throws SQLException {
 
-		this.setTable();
+		this.setTable(effet);
 		PreparedStatement stmt = con.prepareStatement("select name_"+ table +" from " + table);
 
 		ResultSet rs = stmt.executeQuery();
@@ -57,12 +53,12 @@ public class Effets {
 		return listeEffect;
 	}
 	
-	public static void main(String[] args) throws SQLException {
+	/*public static void main(String[] args) throws SQLException {
 		ConnectTable test = new ConnectTable();
 		Effets test2 = new Effets("medical", "Fatigue",test.getConnection());
 		List<String> vite = test2.listEffect();
 		for (String string : vite) {
 			System.out.println(string);
 		}
-	}
+	}*/
 }
