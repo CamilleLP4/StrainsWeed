@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Plants {
@@ -31,6 +32,20 @@ public class Plants {
 		for (String string : effets) {
 			effet.addEffect(typeEffets, string);
 		}
+	}
+	
+	public Plants(Connection conn) {
+		this.connexion = conn;
+	}
+	
+	public void viderTables() throws SQLException {
+		TableLink supprlink = new TableLink(this.connexion);
+		supprlink.videTable();
+		Effets supprEffet = new Effets(this.connexion);
+		supprEffet.videTable();
+		PreparedStatement stmt = this.connexion.prepareStatement("DELETE FROM plant where id_plant > 0");
+		stmt.executeUpdate();
+		stmt.close();
 	}
 	
 	public void addDB() throws SQLException {
@@ -74,10 +89,32 @@ public class Plants {
 		}
 	}
 	
+	/*public List<String> listPlants(String effet) throws SQLException {
+
+		PreparedStatement stmt = connexion.prepareStatement("select nom_plant,  , av_modele Modele\r\n" + 
+				"FROM vol\r\n" + 
+				"INNER JOIN avion ON av_id=vo_avion ;");
+
+		ResultSet rs = stmt.executeQuery();
+
+		List<String> listeEffect = new ArrayList<String>();
+
+		while (rs.next()) {
+			String name = rs.getString("name_" + table);
+			listeEffect.add(name);
+		}
+		return listeEffect;
+	}*/
+	
 	public static void main(String[] args) throws SQLException {
 		ConnectTable test = new ConnectTable();
 		List<String> stest = List.of("Pain","Depression");
-		//Plants test2 = new Plants(test.getConnection(), stest, "medical");
-		
+		List<String> ntest = List.of("Dizzy");
+		List<String> ptest = List.of("Happy","Sleepy");
+		//Plants test2 = new Plants(test.getConnection(), ptest, "positive");
+		//Plants test3 = new Plants("Afpak","hybrid", stest, ntest, ptest, "description",test.getConnection());
+		Plants test4 = new Plants(test.getConnection());
+		test4.viderTables();
+		//test3.addDB();
 	}
 }

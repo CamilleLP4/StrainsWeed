@@ -23,6 +23,12 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
 	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+	
+	// https://mvnrepository.com/artifact/org.json/json
+	compile group: 'org.json', name: 'json', version: '20180813'
+	
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	compile group: 'commons-io', name: 'commons-io', version: '2.5'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.0-jre'
