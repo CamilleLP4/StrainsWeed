@@ -24,7 +24,18 @@ public class Effets {
 		stmt.setString(1, name);
 		System.out.println(stmt);
 		stmt.executeUpdate();
-
+	}
+	
+	public void videTable() throws SQLException {
+		PreparedStatement stmt = this.con.prepareStatement("DELETE FROM meffect where id_meffect > 0");
+		stmt.executeUpdate();
+		stmt.close();
+		stmt = this.con.prepareStatement("DELETE FROM peffect where id_peffect > 0");
+		stmt.executeUpdate();
+		stmt.close();
+		stmt = this.con.prepareStatement("DELETE FROM neffect where id_neffect > 0");
+		stmt.executeUpdate();
+		stmt.close();
 	}
 	
 	private void setTable(String effet) {

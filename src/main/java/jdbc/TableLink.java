@@ -50,6 +50,18 @@ public class TableLink {
 		
 	}
 	
+	public void videTable() throws SQLException {
+		PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM medical where id_plant > 0");
+		stmt.executeUpdate();
+		stmt.close();
+		stmt = this.conn.prepareStatement("DELETE FROM positive where id_plant > 0");
+		stmt.executeUpdate();
+		stmt.close();
+		stmt = this.conn.prepareStatement("DELETE FROM negative where id_plant > 0");
+		stmt.executeUpdate();
+		stmt.close();
+	}
+	
 	public static void main(String[] args) throws SQLException {
 		ConnectTable test = new ConnectTable();
 		TableLink test2 = new TableLink(test.getConnection());

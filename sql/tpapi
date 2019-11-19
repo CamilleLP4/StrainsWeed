@@ -2,10 +2,10 @@ DROp TABLe IF eXISTS plant ;
 CReATe TABLe plant (id_plant InT AUTO_InCRemenT nOT nULL, nom_plant VARCHAR(50), race_plant VARCHAR(20), description_plant LOnGTeXT, pRImARY KeY (id_plant)) enGIne=InnoDB;
 
 DROp TABLe IF eXISTS meffect ;
-CReATe TABLe meffect (id_meffect InT AUTO_InCRemenT nOT nULL, name_meffect enUm('Depression','Insomnia','Pain','Stress','Cramps','Lack of Appetite','Nausea','Headache','Fatigue','Headaches','Pressure','Inflammation','Spasticity','Seizures','Muscle Spasms'), pRImARY KeY (id_meffect)) enGIne=InnoDB;
+CReATe TABLe meffect (id_meffect InT AUTO_InCRemenT nOT nULL, name_meffect enUm('Depression','Insomnia','Pain','Stress','Cramps','Lack of Appetite','Nausea','Headache','Fatigue','Headaches','Eye Pressure','Inflammation','Spasticity','Seizures','Muscle Spasms'), pRImARY KeY (id_meffect)) enGIne=InnoDB;
 
 DROp TABLe IF eXISTS peffect ;
-CReATe TABLe peffect (id_peffect InT AUTO_InCRemenT nOT nULL, name_peffect enUm('Relaxed','Hungry','Euphoric','Happy','Creative','Energetic','Talktive','Uplifted','Tingly','Sleepy','Focused','Giggly','Aroused'), pRImARY KeY (id_peffect)) enGIne=InnoDB;
+CReATe TABLe peffect (id_peffect InT AUTO_InCRemenT nOT nULL, name_peffect enUm('Relaxed','Hungry','Euphoric','Happy','Creative','Energetic','Talkative','Uplifted','Tingly','Sleepy','Focused','Giggly','Aroused'), pRImARY KeY (id_peffect)) enGIne=InnoDB;
 
 DROp TABLe IF eXISTS neffect ;
 CReATe TABLe neffect (id_neffect InT AUTO_InCRemenT nOT nULL, name_neffect enUm('Dizzy','Dry mouth','Paranoid','Dry eyes','Anxious'), pRImARY KeY (id_neffect)) enGIne=InnoDB;
