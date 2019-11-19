@@ -41,16 +41,13 @@ public class InputUser {
 		stmt.setString(4, n.toString());
 		stmt.setString(5, p.toString());
 		
-		stmt.execute();
-	
+		stmt.execute()
+		
 	}
 	
 	
 	
-	
-	
-	
-	
+
 	
 	
 	
