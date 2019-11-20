@@ -6,12 +6,15 @@ import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import jdbc.ConnectTable;
+
 /**
  * Cette classe va servir à ouvrir un menu pour qu'il est le choix de cherche
  * une plante et de trouver tous ces effets. Ou de chercher un effet
  * 
  * @param args
  */
+
 
 public class App {
 
@@ -24,6 +27,8 @@ public class App {
 
 	public static void main(String[] args) throws SQLException {
     InputUser inputUser = new InputUser(); 
+    ConnectTable test = new ConnectTable();
+//    test.getConnection();
     
 		while (choix == 0) {
 			System.out.println(
@@ -32,50 +37,37 @@ public class App {
 			System.out.println("Vous avez choisi : " + choix);
 			if (choix == 1) {
 				System.out.println("Voici toutes les plantes répertoriées: ");
-				
-				PreparedStatement stmt = con.prepareStatement("select * from plants");
-				stmt.setString(1, name);
+				InputUser.readBDDPlant();
+
 			} else if (choix == 2) {
 				System.out.println("Voici tous les effets repertoriés");
+				InputUser.readBDDEffect();
 				
-				PreparedStatement stmt = con.prepareStatement("select * from meffect,peffect,neffect");
-				stmt.setString(1, effect);
 			} else if (choix == 3) {
 				System.out.println("Vous souhaitez ajouter une plante? C'est parti : ");
-				
-				PreparedStatement stmt=con.prepareStatement("insert into * from plant values (?,?,?,?)");  
-				stmt.setInt(1, plants.getId());
-				stmt.setString(3, plants.getName());
-				stmt.setString(2, plants.getRace());
-				stmt.setString(4, plants.getEffects());
+				InputUser.addPlant();
 
 			} else if (choix == 4) {
 				System.out.println("Quelle plante souhaitez vous Modifier? : ");
-				
-				PreparedStatement stmt=con.prepareStatement("update * from plants where name=?,race=?,meffect=?,peffect=?,neffect=?");  
-				stmt.setString("","","","","");
+				InputUser.updatePlant();
+
 			} else if (choix == 5) {
 				System.out.println("Quelle plante souhaitez vous supprimer? Votre choix est irréversible.");
+				InputUser.deletePlant();
 				
-				PreparedStatement stmt=con.prepareStatement("delete from plants where id=?");  
-				stmt.setInt(1, plants.getId());
 			} else if (choix == 3) {
 				System.out.println("Quelle plante souhaitez vous voir en détail?");
-			
-				PreparedStatement stmt = con.prepareStatement("select * from plants where name = ?");
-				stmt.setString(1, name);
+				InputUser.readPlant();
+
 			} else if (choix == 3) {
 				System.out.println("Quelle effet souhaitez vous voir? ");
-			
-				
-				PreparedStatement stmt = con.prepareStatement("select * from meffect,peffect,neffect where effect = ?");
-				stmt.setString(1, effect);
+				InputUser.readEffect();
 
 			} else {
 				System.out.println("Erreur");
 				choix = 0;
 			}
 		}
-
+		
 	}
 }
