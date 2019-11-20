@@ -1,4 +1,4 @@
-package jdbc;
+package strainsweed.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

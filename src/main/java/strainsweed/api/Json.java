@@ -1,4 +1,4 @@
-package api;
+package strainsweed.api;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -16,17 +16,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import jdbc.ConnectTable;
-import jdbc.Plants;
+import strainsweed.jdbc.ConnectTable;
+import strainsweed.jdbc.Requetes;
+import strainsweed.model.Plants;
 
 public class Json {
 	
 	private static final String jsonFileName = "sample.json";
 	private Connection connexion;
 	
-	public Json () {
-		ConnectTable test = new ConnectTable();
-		this.connexion = test.getConnection();
+	public Json (Connection conn) {
+		this.connexion = conn;
 	}
 	
 	public void jsonAddEffect() throws MalformedURLException, IOException, SQLException {
@@ -91,7 +91,7 @@ public class Json {
 				medical.add(current);					
 			}
 			Plants plante = new Plants(nom, race, medical, negative, positive, "",this.connexion);
-			plante.addDB();
+			Requetes.addDB(plante, connexion);
 			
 			if(compteur >= 30) {
 				break;
@@ -116,10 +116,10 @@ public class Json {
 
 	}
 	
-	public static void main(String[] args) throws MalformedURLException, IOException, SQLException {
+	/*public static void main(String[] args) throws MalformedURLException, IOException, SQLException {
 		Json test = new Json();
 		test.jsonAddEffect();
 		test.jsonAddPlants();
-	}
+	}*/
 
 }
