@@ -9,15 +9,25 @@ import java.util.List;
 
 public class Effets {
 
-	String effet;
-	String name;
+	/**
+	 * Variables
+	 */
 	Connection con;
 	String table = ""; 
 
+	/**
+	 * Constructeur
+	 */
 	public Effets(Connection con) throws SQLException {
 		this.con = con;
 	}
 
+	/**
+	 * ajout un effet a la base de donnees
+	 * @param effet le type d'effet pour definir la table
+	 * @param name le nom de l'effet
+	 * @throws SQLException
+	 */
 	public void addEffect(String effet, String name) throws SQLException {
 		this.setTable(effet);
 		PreparedStatement stmt = this.con.prepareStatement("INSERT INTO " + this.table + " (name_"+ table +") values(?)");
@@ -26,6 +36,10 @@ public class Effets {
 		stmt.executeUpdate();
 	}
 	
+	/**
+	 * vide la table
+	 * @throws SQLException
+	 */
 	public void videTable() throws SQLException {
 		PreparedStatement stmt = this.con.prepareStatement("DELETE FROM meffect where id_meffect > 0");
 		stmt.executeUpdate();
@@ -38,6 +52,10 @@ public class Effets {
 		stmt.close();
 	}
 	
+	/**
+	 * fait la conversion entre le type de d'effet et le nom de la table
+	 * @param effet
+	 */
 	private void setTable(String effet) {
 		if (effet == "positive") {
 			 this.table = "peffect";
@@ -48,6 +66,12 @@ public class Effets {
 		}
 	}
 
+	/**
+	 * Recupere les effets en fonction du type demande et retour la liste des effets
+	 * @param effet le type d'effet
+	 * @return une List<String> contenant les effets
+	 * @throws SQLException
+	 */
 	public List<String> listEffect(String effet) throws SQLException {
 
 		this.setTable(effet);
