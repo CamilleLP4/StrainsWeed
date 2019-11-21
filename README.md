@@ -96,4 +96,5 @@ Le build peut fonctionner si on l'exécute en LOCAL
 ![MCD StrainsWeed](https://github.com/Maureendef/StrainsWeed/blob/master/sql/TPAPI.PNG?raw=true)
 # DIAGRAMME
 ![Diagramme StrainsWeed](https://github.com/Maureendef/StrainsWeed/blob/master/diagram/diagrammedeclasse.PNG?raw=true)
-
+# Java Doc
+[Java Doc StrainsWeed](https://maureendef.github.io/StrainsWeed/)
