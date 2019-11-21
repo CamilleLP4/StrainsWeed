@@ -1,5 +1,7 @@
 # StrainsWeed
 
+![Logo API](https://images-na.ssl-images-amazon.com/images/I/41rS2-RaiML._SX425_.jpg)
+
 ### App
 
 Cette classe d'entrée du programme le menu et dirige l'utilisateur
