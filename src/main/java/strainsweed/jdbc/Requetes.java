@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import strainsweed.model.Plants;
 
 /**
@@ -250,7 +249,6 @@ public class Requetes {
 			stmt.setString(2, raceUpdate);
 			stmt.setString(3, descriptionUpdate);
 			stmt.setString(4, name);
-			System.out.println(stmt);
 			stmt.executeUpdate();
 			stmt.close();
 		}
