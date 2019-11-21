@@ -1,6 +1,6 @@
 # StrainsWeed
 
-![Logo API](https://images-na.ssl-images-amazon.com/images/I/41rS2-RaiML._SX425_.jpg)
+![Logo API](https://cdn.discordapp.com/attachments/636222432503660567/647024950187786240/kisspng-cannabis-ruderalis-leaf-medical-cannabis-clip-art-marijuana-5ab8bd8d654971.09532403152205658.png)
 
 ### App
 
