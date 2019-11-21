@@ -39,5 +39,5 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = 'StrainsWeed.App'
+    mainClassName = 'strainsweed.App'
 }
