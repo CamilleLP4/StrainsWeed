@@ -1,94 +1,95 @@
 package strainsweed.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import strainsweed.jdbc.ConnectTable;
-import strainsweed.jdbc.Effets;
-import strainsweed.jdbc.TableLink;
-
+/**
+ * Classe gerant l'objet Plants
+ * 
+ * @author Maureen Camille Florian
+ *
+ */
 public class Plants {
-	
+
+	/**
+	 * Variables
+	 */
 	private String name;
 	private String race;
 	private List<String> medical;
 	private List<String> negative;
 	private List<String> positive;
 	private String description;
-	private Connection connexion;
-	
-	public Plants(String name, String race, List<String> m, List<String> n, List<String> p, String desc, Connection conn) {
+
+	/**
+	 * Constructeur de l'objet Plants
+	 * 
+	 * @param name nom de la plante
+	 * @param race espece de la plante
+	 * @param m    list de chaine de caractere d'effet medicaux
+	 * @param n    list de chaine de caractere d'effet negatif
+	 * @param p    list de chaine de caractere d'effet positif
+	 * @param desc la description
+	 */
+	public Plants(String name, String race, List<String> m, List<String> n, List<String> p, String desc) {
 		this.name = name;
 		this.race = race;
 		this.medical = m;
 		this.negative = n;
 		this.positive = p;
 		this.description = desc;
-		this.connexion = conn;
 	}
-	
-	public Plants(Connection conn, List<String> effets, String typeEffets) throws SQLException {
-		Effets effet = new Effets(conn);
-		for (String string : effets) {
-			effet.addEffect(typeEffets, string);
-		}
-	}
-	
-	public Plants(Connection conn) {
-		this.connexion = conn;
-	}
-	
-	
-	
+
+	/**
+	 * Retourne le nom
+	 * 
+	 * @return Retourne le nom
+	 */
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	/**
+	 * Retourne la race
+	 * 
+	 * @return Retourne la race
+	 */
 	public String getRace() {
 		return race;
 	}
 
-	public void setRace(String race) {
-		this.race = race;
-	}
-
+	/**
+	 * Retourne les effets medicaux
+	 * 
+	 * @return Retourne les effets medicaux
+	 */
 	public List<String> getMedical() {
 		return medical;
 	}
 
-	public void setMedical(List<String> medical) {
-		this.medical = medical;
-	}
-
+	/**
+	 * Retourne les effets negatifs
+	 * 
+	 * @return Retourne les effets negatifs
+	 */
 	public List<String> getNegative() {
 		return negative;
 	}
 
-	public void setNegative(List<String> negative) {
-		this.negative = negative;
-	}
-
+	/**
+	 * Retourne les effets positifs
+	 * 
+	 * @return Retourne les effets positifs
+	 */
 	public List<String> getPositive() {
 		return positive;
 	}
 
-	public void setPositive(List<String> positive) {
-		this.positive = positive;
-	}
-
+	/**
+	 * Retourne la description
+	 * 
+	 * @return Retourne la description
+	 */
 	public String getDescription() {
 		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 }
